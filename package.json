@@ -11,12 +11,14 @@
     "ember"
   ],
   "version": "0.0.1",
-  "homepage": "https://github.com/mozilla/recroom",
+  "homepage": "https://github.com/mozilla/generator-recroom",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mozilla/recroom.git"
+    "url": "git://github.com/mozilla/generator-recroom.git"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
   "dependencies": {
     "coffee-script": "^1.7.1",
     "express": "^3.4.8",
@@ -37,7 +39,8 @@
     "bower": "~1.3.2",
     "yo": "~1.1.2",
     "yeoman-generator": "~0.16.0",
-    "fleck": "~0.5.1"
+    "fleck": "~0.5.1",
+    "chalk": "~0.4.0"
   },
   "devDependencies": {
     "grunt-banner": "~0.2.2"
@@ -48,10 +51,7 @@
   },
   "licence": "Apache-2.0",
   "bugs": {
-    "url": "http://github.com/mozilla/recroom/issues"
-  },
-  "scripts": {
-    "test": "mocha --reporter spec"
+    "url": "http://github.com/mozilla/generator-recroom/issues"
   },
   "main": "app/index.js",
   "preferGlobal": "true"

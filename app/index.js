@@ -1,4 +1,5 @@
 'use strict';
+var chalk = require('chalk');
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
@@ -35,7 +36,9 @@ var RecroomGenerator = module.exports = function RecroomGenerator(args, options)
         'bower_components/jquery/jquery.js',
         'bower_components/handlebars/handlebars.runtime.js',
         '@@ember',
-        '@@ember_data'
+        '@@ember_data',
+        'bower_components/brick/dist/brick.js',
+        'bower_components/localforage/localforage.js'
     ];
 };
 
@@ -46,8 +49,10 @@ RecroomGenerator.prototype._getJSPath = function _getJSPath(file) {
 };
 
 RecroomGenerator.prototype.welcome = function welcome() {
-    // welcome message
-    console.log(this.yeoman);
+    // Thanks to @fwenzel for this one.
+    console.log(
+        chalk.yellow("\nWelcome to recroom. Get ready to make an awesome web app.")
+    );
 };
 
 RecroomGenerator.prototype.askFor = function askFor() {
@@ -55,14 +60,13 @@ RecroomGenerator.prototype.askFor = function askFor() {
 
     var prompts = [];
 
-    if (!this.options.coffee) {
-        prompts.push({
-            type: 'confirm',
-            name: 'coffeescript',
-            message: 'Would you like to use CoffeeScript?',
-            default: false
-        });
-    }
+    // Ask if the user is interested in using CoffeeScript.
+    prompts.push({
+        type: 'confirm',
+        name: 'coffeescript',
+        message: 'Would you like to use CoffeeScript?',
+        default: false
+    });
 
     this.prompt(prompts, function(props) {
         this.options.coffee = props.coffeescript;
@@ -100,6 +104,10 @@ RecroomGenerator.prototype.jshint = function jshint() {
     this.copy('_jshintrc', '.jshintrc');
 };
 
+RecroomGenerator.prototype.manifestWebapp = function manifestWebapp() {
+    this.copy('_manifest.webapp', 'manifest.webapp');
+};
+
 RecroomGenerator.prototype.tests = function tests() {
     if (this.options.karma) {
         this.mkdir('test');
@@ -128,7 +136,8 @@ RecroomGenerator.prototype.templates = function templates() {
 RecroomGenerator.prototype.writeIndex = function writeIndex() {
     var mainCssFiles = [
         'styles/normalize.css',
-        'styles/style.css'
+        'styles/style.css',
+        'bower_components/brick/dist/brick.css'
     ];
 
     this.indexFile = this.appendStyles(this.indexFile, 'styles/main.css', mainCssFiles);
@@ -137,6 +146,8 @@ RecroomGenerator.prototype.writeIndex = function writeIndex() {
 
     this.indexFile = this.appendFiles(this.indexFile, 'js', 'scripts/templates.js', ['scripts/compiled-templates.js'], null, '.tmp');
     this.indexFile = this.appendFiles(this.indexFile, 'js', 'scripts/main.js', ['scripts/combined-scripts.js'], null, '.tmp');
+
+    this.indexFile = this.indexFile.replace('<title></title>', '<title>' + this.appname + '</title>');
 };
 
 RecroomGenerator.prototype.all = function all() {
