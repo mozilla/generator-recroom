@@ -22,26 +22,6 @@ module.exports = exports = function(grunt) {
             options: {},
             source: ['src/*.coffee']
         },
-        shell: {
-            publishDocs: {
-                options: {
-                    stdout: true
-                },
-                command: 'rake publish ALLOW_DIRTY=true'
-            }
-        },
-        usebanner: {
-            taskName: {
-                options: {
-                    position: 'top',
-                    banner: '#! /usr/bin/env node',
-                    linebreak: true
-                },
-                files: {
-                    src: ['dist/main.js']
-                }
-            }
-        },
         watch: {
             build: {
                 files: ['src/*.coffee'],
@@ -58,7 +38,6 @@ module.exports = exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.registerTask('default', ['build', 'watch']);
-    grunt.registerTask('build', ['coffee', 'usebanner']);
-    grunt.registerTask('publish', ['shell']);
+    grunt.registerTask('build', ['coffee']);
     grunt.registerTask('test', ['build', 'coffeelint']);
 };
