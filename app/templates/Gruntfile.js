@@ -28,7 +28,7 @@ module.exports = function (grunt) {
         yeoman: yeomanConfig,
         watch: {
             emberTemplates: {
-                files: '<%%= yeoman.app %>/templates/**/*.hbs',
+                files: ['<%= yeoman.app %>/templates/**/*.hbs','<%= yeoman.app %>/bower_components/**/*.hbs'],
                 tasks: ['emberTemplates']
             },<% if (options.coffee) { %>
             coffee: {
@@ -315,14 +315,17 @@ module.exports = function (grunt) {
         },<% } %>
         emberTemplates: {
             options: {
-                templateName: function (sourceFile) {
-                    var templatePath = yeomanConfig.app + '/templates/';
-                    return sourceFile.replace(templatePath, '');
-                }
+                /* we use a regular expression to set the paths for your 
+                templates in <your app name>/templates and for the fxos-ui templates that
+                are a bower dependency */
+                templateBasePath: /app\/templates\/|app\/bower_components\/fxos-ui\/templates\//
             },
             dist: {
                 files: {
-                    '.tmp/scripts/compiled-templates.js': '<%%= yeoman.app %>/templates/{,*/}*.hbs'
+                    '.tmp/scripts/compiled-templates.js': [
+                        'app/templates/{,*/}*.hbs',
+                        'app/bower_components/fxos-ui/templates/components/{,*/}*.hbs'
+                    ]
                 }
             }
         },<% if (!options.coffee) { %>
