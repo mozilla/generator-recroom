@@ -30,7 +30,7 @@ describe('Karma', function () {
         return done(err);
       }
       this.ember = {};
-      this.ember.app = helpers.createGenerator('ember:app', [
+      this.ember.app = helpers.createGenerator('recroom:app', [
         '../../router',
         '../../app', [
           helpers.createDummyGenerator(),
@@ -40,7 +40,6 @@ describe('Karma', function () {
       helpers.mockPrompt(this.ember.app, {
         'compassBootstrap': true
       });
-      this.ember.app.options['coffee'] = false;
       this.ember.app.options['skip-install'] = true;
       done();
     }.bind(this));

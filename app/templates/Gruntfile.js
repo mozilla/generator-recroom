@@ -30,19 +30,10 @@ module.exports = function (grunt) {
             emberTemplates: {
                 files: ['<%= yeoman.app %>/templates/**/*.hbs','<%= yeoman.app %>/bower_components/**/*.hbs'],
                 tasks: ['emberTemplates']
-            },<% if (options.coffee) { %>
-            coffee: {
-                files: ['<%%= yeoman.app %>/scripts/{,*/}*.coffee'],
-                tasks: ['coffee:dist']
             },
-            coffeeTest: {
-                files: ['test/spec/{,*/}*.coffee'],
-                tasks: ['coffee:test']
-            },<% } %>
-            neuter: {<% if (!options.coffee) { %>
-                files: ['<%%= yeoman.app %>/scripts/{,*/}*.js'],<% }else{ %>
+            neuter: {
                 files: ['.tmp/scripts/{,*/}*.js',
-                        '!.tmp/scripts/combined-scripts.js'],<% } %>
+                        '!.tmp/scripts/combined-scripts.js'],
                 tasks: ['neuter']
             },
             livereload: {
@@ -138,26 +129,6 @@ module.exports = function (grunt) {
                 options: {
                     specs: 'test/spec/{,*/}*.js'
                 }
-            }
-        },<% } %><% if (options.coffee) { %>
-        coffee: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%%= yeoman.app %>/scripts',
-                    src: '{,*/}*.coffee',
-                    dest: '.tmp/scripts',
-                    ext: '.js'
-                }]
-            },
-            test: {
-                files: [{
-                    expand: true,
-                    cwd: 'test/spec',
-                    src: '{,*/}*.coffee',
-                    dest: '.tmp/spec',
-                    ext: '.js'
-                }]
             }
         },<% } %>
         // not used since Uglify task does concat,
@@ -292,16 +263,13 @@ module.exports = function (grunt) {
         },
         concurrent: {
             server: [
-                'emberTemplates'<%if (options.coffee) { %>,
-                'coffee:dist'<% } %>
+                'emberTemplates'
             ],
             test: [
-                'emberTemplates'<%if (options.coffee) { %>,
-                'coffee'<% } %>
+                'emberTemplates'
             ],
             dist: [
-                'emberTemplates',<%if (options.coffee) { %>
-                'coffee',<% } %>
+                'emberTemplates',
                 'imagemin',
                 'svgmin',
                 'htmlmin'
@@ -328,18 +296,7 @@ module.exports = function (grunt) {
                     ]
                 }
             }
-        },<% if (!options.coffee) { %>
-        neuter: {
-            app: {
-                options: {
-                    filepathTransform: function (filepath) {
-                        return yeomanConfig.app + '/' + filepath;
-                    }
-                },
-                src: '<%%= yeoman.app %>/scripts/app.js',
-                dest: '.tmp/scripts/combined-scripts.js'
-            }
-        }<% } else { %>
+        },
         neuter: {
             app: {
                 options: {
@@ -351,7 +308,7 @@ module.exports = function (grunt) {
                 src: ['.tmp/scripts/app.js'],
                 dest: '.tmp/scripts/combined-scripts.js'
             }
-        }<% } %>
+        }
     });
 
     grunt.registerTask('server', function (target) {

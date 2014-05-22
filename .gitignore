@@ -3,6 +3,8 @@
 bower_components
 node_modules
 
+test/temp/
+
 ### Ruby Stuff for slate docs
 *.gem
 *.rbc

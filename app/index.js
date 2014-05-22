@@ -19,9 +19,6 @@ var RecroomGenerator = module.exports = function RecroomGenerator(args, options)
         options['test-framework'] = 'mocha';
     }
 
-    // hook for CoffeeScript
-    this.options.coffee = options.coffee;
-
     // hook for karma test runner
     this.options.karma = options.karma;
 
@@ -45,7 +42,7 @@ var RecroomGenerator = module.exports = function RecroomGenerator(args, options)
 util.inherits(RecroomGenerator, yeoman.generators.Base);
 
 RecroomGenerator.prototype._getJSPath = function _getJSPath(file) {
-    return file + (this.options.coffee ? '.coffee' : '.js');
+    return file + '.js';
 };
 
 RecroomGenerator.prototype.welcome = function welcome() {
@@ -60,17 +57,7 @@ RecroomGenerator.prototype.askFor = function askFor() {
 
     var prompts = [];
 
-    // Ask if the user is interested in using CoffeeScript.
-    prompts.push({
-        type: 'confirm',
-        name: 'coffeescript',
-        message: 'Would you like to use CoffeeScript?',
-        default: false
-    });
-
     this.prompt(prompts, function(props) {
-        this.options.coffee = props.coffeescript;
-
         cb();
     }.bind(this));
 };

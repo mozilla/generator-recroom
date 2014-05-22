@@ -5,11 +5,10 @@ var yeoman = require('yeoman-generator');
 var ModelGenerator = module.exports = function ModelGenerator(args, options, config) {
   yeoman.generators.NamedBase.apply(this, arguments);
 
-  this.hookFor('ember:controller', {
+  this.hookFor('recroom:controller', {
     args: args
   });
 
-  this.options.coffee = options.coffee;
   // XXX default and banner to be implemented
   this.argument('attributes', { type: Array, defaults: [], banner: 'field[:type] field[:type]' });
 
@@ -26,7 +25,7 @@ var ModelGenerator = module.exports = function ModelGenerator(args, options, con
 util.inherits(ModelGenerator, yeoman.generators.NamedBase);
 
 ModelGenerator.prototype._getJSPath = function _getJSPath(file) {
-  return file + (this.options.coffee ? '.coffee' : '.js');
+  return file + '.js';
 };
 
 ModelGenerator.prototype.files = function files() {

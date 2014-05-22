@@ -20,25 +20,13 @@ describe('Router', function () {
   };
 
   it('with javascript', function (done) {
-    var router = helpers.createGenerator('ember:router', ['../../router']);
+    var router = helpers.createGenerator('recroom:router', ['../../router']);
 
     filesDoNotExist([router.router_file]);
 
     router.controller_files = ['user_controller.js'];
     router.run({}, function () {
-      helpers.assertFiles([router.options.router_file]);
-      done();
-    });
-  });
-
-  it('with coffee-script', function (done) {
-    var router = helpers.createGenerator('ember:router', ['../../router']);
-
-    filesDoNotExist([router.router_file]);
-
-    router.controllerFiles = ['user_controller.coffee'];
-    router.run({}, function () {
-      helpers.assertFiles([router.options.router_file]);
+      helpers.assertFile([router.options.router_file]);
       done();
     });
   });

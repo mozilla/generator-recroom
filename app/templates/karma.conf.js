@@ -27,13 +27,10 @@ module.exports = function(config) {
       'app/bower_components/ember-mocha-adapter/adapter.js',
       <% } %>
       '.tmp/scripts/combined-scripts.js',
-      '.tmp/scripts/compiled-templates.js',<% if (options.coffee) { %>
-      'test/support/*.coffee',
-      'test/spec/*.coffee',
-      'test/integration/*.coffee'<% } else { %>
+      '.tmp/scripts/compiled-templates.js',
       'test/support/*.js',
       'test/spec/*.js',
-      'test/integration/*.js'<% } %>
+      'test/integration/*.js'
     ],
 
 

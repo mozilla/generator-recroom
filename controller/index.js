@@ -8,22 +8,11 @@ var ControllerGenerator = module.exports = function ControllerGenerator(args, op
   yeoman.generators.NamedBase.apply(this, arguments);
   this.pluralized_name = fleck.pluralize(this.name);
 
-  this.options.coffee = options.coffee;
-  // TODO Find a better way to do this. Passing `coffee` via options from controller seems to be a futile effort
-  this.options.coffee = options.coffee;
-  if (!this.options.coffee && this.expandFiles('app/scripts/**/*.coffee', {}).length > 0) {
-    this.options.coffee = true;
-  }
-
-  this.hookFor('ember:view', {
-    args: args,
-    // this doesn't seem to be working yet
-    options: {
-      coffee: this.options.coffee
-    }
+  this.hookFor('recroom:view', {
+    args: args
   });
 
-  this.hookFor('ember:router');
+  this.hookFor('recroom:router');
 };
 
 // TODO: add option for Array or Object controller
@@ -31,7 +20,7 @@ var ControllerGenerator = module.exports = function ControllerGenerator(args, op
 util.inherits(ControllerGenerator, yeoman.generators.NamedBase);
 
 ControllerGenerator.prototype._getJSPath = function _getJSPath(file) {
-  return file + (this.options.coffee ? '.coffee' : '.js');
+  return file + '.js';
 };
 
 ControllerGenerator.prototype.files = function files() {

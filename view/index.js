@@ -7,18 +7,12 @@ var ViewGenerator = module.exports = function ViewGenerator(args, options, confi
   yeoman.generators.NamedBase.apply(this, arguments);
   this.pluralized_name = fleck.pluralize(this.name);
   this.slugified_name = this._.slugify(this.name);
-
-  // TODO Find a better way to do this. Passing `coffee` via options from controller seems to be a futile effort
-  this.options.coffee = options.coffee;
-  if (!this.options.coffee && this.expandFiles('app/scripts/**/*.coffee', {}).length > 0) {
-    this.options.coffee = true;
-  }
 };
 
 util.inherits(ViewGenerator, yeoman.generators.NamedBase);
 
 ViewGenerator.prototype._getJSPath = function _getJSPath(file) {
-  return file + (this.options.coffee ? '.coffee' : '.js');
+  return file + '.js';
 };
 
 ViewGenerator.prototype.files = function files() {
