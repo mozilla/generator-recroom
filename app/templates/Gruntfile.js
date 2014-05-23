@@ -28,12 +28,17 @@ module.exports = function (grunt) {
         yeoman: yeomanConfig,
         watch: {
             emberTemplates: {
-                files: ['<%= yeoman.app %>/templates/**/*.hbs','<%= yeoman.app %>/bower_components/**/*.hbs'],
+                files: ['<%%= yeoman.app %>/templates/**/*.hbs','<%= yeoman.app %>/bower_components/**/*.hbs'],
                 tasks: ['emberTemplates']
             },
             neuter: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+                files: ['<%%= yeoman.app %>/scripts/{,*/}*.js'],
                 tasks: ['neuter']
+            },
+            stylus: {
+                files: ['<%%= yeoman.app %>/styles/{,*/}*.css',
+                        '<%%= yeoman.app %>/styles/{,*/}*.styl'],
+                tasks: ['stylus']
             },
             livereload: {
                 options: {
@@ -189,7 +194,7 @@ module.exports = function (grunt) {
         cssmin: {
             dist: {
                 files: {
-                    '<%%= yeoman.dist %>/styles/main.css': [
+                    '<%%= yeoman.dist %>/styles/compiled-stylus.css': [
                         '.tmp/styles/{,*/}*.css',
                         '<%%= yeoman.app %>/styles/{,*/}*.css'
                     ]
@@ -296,6 +301,17 @@ module.exports = function (grunt) {
                 }
             }
         },
+        stylus: {
+            compile: {
+                options: {
+                    compress: false,
+                    paths: ['node_modules/grunt-contrib-stylus/node_modules']
+                },
+                files: {
+                    '.tmp/styles/compiled-stylus.css': ['<%%= yeoman.app %>/styles/*.styl']
+                }
+            }
+        },
         neuter: {
             app: {
                 options: {
@@ -323,6 +339,7 @@ module.exports = function (grunt) {
             'clean:server',
             'replace:app',
             'concurrent:server',
+            'stylus',
             'neuter:app',
             'connect:livereload',
             'open',
@@ -335,6 +352,7 @@ module.exports = function (grunt) {
         'replace:app',
         'concurrent:test',
         'connect:test',
+        'stylus',
         'neuter:app',<% if (options.karma) { %>
         'karma'<% } else if (testFramework === 'mocha') { %>
         'mocha'<% } else if (testFramework === 'jasmine') { %>
@@ -346,6 +364,7 @@ module.exports = function (grunt) {
         'replace:dist',
         'useminPrepare',
         'concurrent:dist',
+        'stylus',
         'neuter:app',
         'concat',
         'cssmin',

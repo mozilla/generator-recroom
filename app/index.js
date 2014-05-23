@@ -124,7 +124,7 @@ RecroomGenerator.prototype.templates = function templates() {
 RecroomGenerator.prototype.writeIndex = function writeIndex() {
     var mainCssFiles = [
         'styles/normalize.css',
-        'styles/style.css',
+        'styles/compiled-stylus.css',
         'bower_components/brick/dist/brick.css'
     ];
 
@@ -142,7 +142,7 @@ RecroomGenerator.prototype.all = function all() {
     this.write('app/index.html', this.indexFile);
 
     this.copy('styles/normalize.css', 'app/styles/normalize.css');
-    this.copy('styles/style.css', 'app/styles/style.css');
+    this.copy('styles/app.styl', 'app/styles/app.styl');
 
     this.copy(this._getJSPath('scripts/app'), this._getJSPath('app/scripts/app'));
     this.copy(this._getJSPath('scripts/store'), this._getJSPath('app/scripts/store'));
