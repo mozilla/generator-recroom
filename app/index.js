@@ -36,7 +36,7 @@ var RecroomGenerator = module.exports = function RecroomGenerator(args, options)
         '@@ember_data',
         'bower_components/brick/dist/brick.js',
         'bower_components/localforage/dist/localforage.js',
-        'scripts/vendor/l10n.js'
+        'bower_components/i18n-js/app/assets/javascripts/i18n.js'
     ];
 };
 
@@ -47,7 +47,6 @@ RecroomGenerator.prototype._getJSPath = function _getJSPath(file) {
 };
 
 RecroomGenerator.prototype.welcome = function welcome() {
-    // Thanks to @fwenzel for this one.
     console.log(
         chalk.yellow("\nWelcome to recroom. Get ready to make an awesome web app.")
     );
@@ -68,6 +67,7 @@ RecroomGenerator.prototype.createDirLayout = function createDirLayout() {
     this.mkdir('app/styles');
     this.mkdir('app/images');
     this.mkdir('app/scripts');
+    this.mkdir('app/scripts/l10n');
     this.mkdir('app/scripts/models');
     this.mkdir('app/scripts/controllers');
     this.mkdir('app/scripts/routes');
@@ -147,6 +147,8 @@ RecroomGenerator.prototype.all = function all() {
     this.copy(this._getJSPath('scripts/app'), this._getJSPath('app/scripts/app'));
     this.copy(this._getJSPath('scripts/store'), this._getJSPath('app/scripts/store'));
     this.copy(this._getJSPath('scripts/router'), this._getJSPath('app/scripts/router'));
+    this.copy(this._getJSPath('scripts/l10n/helper'), this._getJSPath('app/scripts/l10n/helper'));
+    this.copy(this._getJSPath('scripts/l10n/translations'), this._getJSPath('app/scripts/l10n/translations'));
     this.copy(this._getJSPath('scripts/routes/application_route'), this._getJSPath('app/scripts/routes/application_route'));
 };
 

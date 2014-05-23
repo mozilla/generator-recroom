@@ -32,8 +32,7 @@ module.exports = function (grunt) {
                 tasks: ['emberTemplates']
             },
             neuter: {
-                files: ['.tmp/scripts/{,*/}*.js',
-                        '!.tmp/scripts/combined-scripts.js'],
+                files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
                 tasks: ['neuter']
             },
             livereload: {
@@ -300,12 +299,11 @@ module.exports = function (grunt) {
         neuter: {
             app: {
                 options: {
-                    template: "{%= src %}",
                     filepathTransform: function (filepath) {
-                        return '.tmp/' + filepath;
+                        return yeomanConfig.app + '/' + filepath;
                     }
                 },
-                src: ['.tmp/scripts/app.js'],
+                src: '<%%= yeoman.app %>/scripts/app.js',
                 dest: '.tmp/scripts/combined-scripts.js'
             }
         }
