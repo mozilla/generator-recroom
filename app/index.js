@@ -35,7 +35,8 @@ var RecroomGenerator = module.exports = function RecroomGenerator(args, options)
         '@@ember',
         '@@ember_data',
         'bower_components/brick/dist/brick.js',
-        'bower_components/localforage/localforage.js'
+        'bower_components/localforage/dist/localforage.js',
+        'scripts/vendor/l10n.js'
     ];
 };
 
