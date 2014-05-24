@@ -18,6 +18,7 @@
         "<%= _.classify(appname) %>": true,
         "jQuery": true,
         "Ember": true,
+        "Em": true,
         "Handlebars": true,
         "DS": true
     }
