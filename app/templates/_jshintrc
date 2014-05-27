@@ -17,6 +17,7 @@
     "globals": {
         "<%= _.classify(appname) %>": true,
         "jQuery": true,
+        "$": true,
         "Ember": true,
         "Em": true,
         "Handlebars": true,
