@@ -12,7 +12,7 @@
     "256": "/images/icon-256.png"
   },
   "developer": {
-    "name": "",
+    "name": "<%= process.env.USER %>",
     "url": ""
   },
   "launch_path": "/",
