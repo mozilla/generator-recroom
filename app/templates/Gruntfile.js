@@ -146,6 +146,12 @@ module.exports = function (grunt) {
         /*uglify: {
             dist: {}
         },*/
+        'gh-pages': {
+            options: {
+                base: 'dist'
+            },
+            src: ['**']
+        },
         rev: {
             dist: {
                 files: {
@@ -203,48 +209,49 @@ module.exports = function (grunt) {
         },
         htmlmin: {
             dist: {
-                options: {
-                    /*removeCommentsFromCDATA: true,
-                    // https://github.com/yeoman/grunt-usemin/issues/44
-                    //collapseWhitespace: true,
-                    collapseBooleanAttributes: true,
-                    removeAttributeQuotes: true,
-                    removeRedundantAttributes: true,
-                    useShortDoctype: true,
-                    removeEmptyAttributes: true,
-                    removeOptionalTags: true*/
-                },
                 files: [{
                     expand: true,
                     cwd: '<%%= yeoman.app %>',
                     src: '*.html',
                     dest: '<%%= yeoman.dist %>'
                 }]
+            },
+            deploy: {
+                options: {
+                    collapseWhitespace: true,
+                    removeComments: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%%= yeoman.dist %>',
+                    src: '{,*/}*.html',
+                    dest: '<%%= yeoman.dist %>'
+                }]
             }
         },
         replace: {
-          app: {
-            options: {
-              variables: {
-                ember: 'bower_components/ember/ember.js',
-                ember_data: 'bower_components/ember-data/ember-data.js'
-              }
+            app: {
+                options: {
+                    variables: {
+                        ember: 'bower_components/ember/ember.js',
+                        ember_data: 'bower_components/ember-data/ember-data.js'
+                    }
+                },
+                files: [
+                    {src: '<%%= yeoman.app %>/index.html', dest: '.tmp/index.html'}
+                ]
             },
-            files: [
-              {src: '<%%= yeoman.app %>/index.html', dest: '.tmp/index.html'}
-            ]
-          },
-          dist: {
-            options: {
-              variables: {
-                ember: 'bower_components/ember/ember.prod.js',
-                ember_data: 'bower_components/ember-data/ember-data.prod.js'
-              }
-            },
-            files: [
-              {src: '<%%= yeoman.app %>/index.html', dest: '.tmp/index.html'}
-            ]
-          }
+            dist: {
+                options: {
+                    variables: {
+                        ember: 'bower_components/ember/ember.prod.js',
+                        ember_data: 'bower_components/ember-data/ember-data.prod.js'
+                    }
+                },
+                files: [
+                    {src: '<%%= yeoman.app %>/index.html', dest: '.tmp/index.html'}
+                ]
+            }
         },
         // Put files not handled in other tasks here
         copy: {
@@ -371,7 +378,13 @@ module.exports = function (grunt) {
         'uglify',
         'copy',
         'rev',
-        'usemin'
+        'usemin',
+        'htmlmin:deploy'
+    ]);
+
+    grunt.registerTask('deploy', [
+        'build',
+        'gh-pages'
     ]);
 
     grunt.registerTask('default', [
