@@ -93,7 +93,7 @@ RecroomGenerator.prototype.jshint = function jshint() {
 };
 
 RecroomGenerator.prototype.manifestWebapp = function manifestWebapp() {
-    this.copy('_manifest.webapp', 'manifest.webapp');
+    this.copy('_manifest.webapp', 'app/manifest.webapp');
 };
 
 RecroomGenerator.prototype.tests = function tests() {
