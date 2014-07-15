@@ -1,5 +1,3 @@
-var FxosUI = window.FxosUI = Ember.Namespace.create();
-
 var <%= _.classify(appname) %> = window.<%= _.classify(appname) %> = Ember.Application.create();
 
 // Order and include as you please.

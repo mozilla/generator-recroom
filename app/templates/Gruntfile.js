@@ -28,7 +28,10 @@ module.exports = function (grunt) {
         yeoman: yeomanConfig,
         watch: {
             emberTemplates: {
-                files: ['<%%= yeoman.app %>/templates/**/*.hbs','<%= yeoman.app %>/bower_components/**/*.hbs'],
+                files: [
+                    '<%%= yeoman.app %>/templates/**/*.hbs',
+                    '<%= yeoman.app %>/bower_components/**/*.hbs'
+                ],
                 tasks: ['emberTemplates']
             },
             neuter: {
@@ -36,8 +39,10 @@ module.exports = function (grunt) {
                 tasks: ['neuter']
             },
             stylus: {
-                files: ['<%%= yeoman.app %>/styles/{,*/}*.css',
-                        '<%%= yeoman.app %>/styles/{,*/}*.styl'],
+                files: [
+                    '<%%= yeoman.app %>/styles/{,*/}*.css',
+                    '<%%= yeoman.app %>/styles/{,*/}*.styl'
+                ],
                 tasks: ['stylus']
             },
             livereload: {
@@ -297,16 +302,12 @@ module.exports = function (grunt) {
         },<% } %>
         emberTemplates: {
             options: {
-                /* we use a regular expression to set the paths for your 
-                templates in <your app name>/templates and for the fxos-ui templates that
-                are a bower dependency */
-                templateBasePath: /app\/templates\/|app\/bower_components\/fxos-ui\/templates\//
+                templateBasePath: 'app/templates/'
             },
             dist: {
                 files: {
                     '.tmp/scripts/compiled-templates.js': [
-                        'app/templates/{,*/}*.hbs',
-                        'app/bower_components/fxos-ui/templates/components/{,*/}*.hbs'
+                        'app/templates/{,*/}*.hbs'
                     ]
                 }
             }
@@ -318,7 +319,9 @@ module.exports = function (grunt) {
                     paths: ['node_modules/grunt-contrib-stylus/node_modules']
                 },
                 files: {
-                    '.tmp/styles/compiled-stylus.css': ['<%%= yeoman.app %>/styles/*.styl']
+                    '.tmp/styles/compiled-stylus.css': [
+                        '<%%= yeoman.app %>/styles/*.styl'
+                    ]
                 }
             }
         },
@@ -336,7 +339,8 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('server', function (target) {
-        grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
+        grunt.log.warn('The `server` task has been deprecated.' +
+                       ' Use `grunt serve` to start a server.');
         grunt.task.run(['serve:' + target]);
     });
 

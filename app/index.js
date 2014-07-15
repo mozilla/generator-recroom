@@ -48,7 +48,8 @@ RecroomGenerator.prototype._getJSPath = function _getJSPath(file) {
 
 RecroomGenerator.prototype.welcome = function welcome() {
     console.log(
-        chalk.yellow("\nWelcome to recroom. Get ready to make an awesome web app.")
+        chalk.yellow("\nWelcome to recroom. " +
+                     "Get ready to make an awesome web app.")
     );
 };
 
