@@ -21,6 +21,7 @@
         "Ember": true,
         "Em": true,
         "Handlebars": true,
-        "DS": true
+        "DS": true,
+        "I18n": true
     }
 }
