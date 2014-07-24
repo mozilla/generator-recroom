@@ -73,6 +73,7 @@ RecroomGenerator.prototype.createDirLayout = function createDirLayout() {
     this.mkdir('app/scripts/controllers');
     this.mkdir('app/scripts/routes');
     this.mkdir('app/scripts/views');
+    this.mkdir('dist');
 };
 
 RecroomGenerator.prototype.git = function git() {
