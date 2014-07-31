@@ -8,7 +8,7 @@ describe("Index page", function () {
 
 describe("ApplicationRoute", function () {
     describe("model property", function () {
-        var applicationRoute = <%= _.classify(appname) %>.ApplicationRoute.create();
+        var applicationRoute = App.ApplicationRoute.create();
         it("should have the right number of items", function () {
             var model = applicationRoute.model();
             model.should.have.length(3);

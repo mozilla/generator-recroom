@@ -1,7 +1,7 @@
-<%= _.classify(appname) %>.ApplicationAdapter = DS.FixtureAdapter;
+App.ApplicationAdapter = DS.FixtureAdapter;
 
 // Add ability to query fixtures in development mode.
-if (<%= _.classify(appname) %>.ApplicationAdapter === DS.FixtureAdapter) {
+if (App.ApplicationAdapter === DS.FixtureAdapter) {
     DS.FixtureAdapter.reopen({
         queryFixtures: function(records, query, type) {
             return records.filter(function(record) {
