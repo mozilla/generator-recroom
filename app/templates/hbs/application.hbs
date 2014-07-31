@@ -10,6 +10,10 @@
     {{outlet}}
   </section>
   <footer>
-    &copy;
+    <x-tabbar>
+      <x-tabbar-tab>
+        {{#link-to 'index'}}{{t app.title}}{{/link-to}}
+      </x-tabbar-tab>
+    </x-tabbar>
   </footer>
 </x-layout>
