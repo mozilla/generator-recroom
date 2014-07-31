@@ -35,6 +35,7 @@ describe('File Creation', function () {
         '../../router',
         '../../app', [
           helpers.createDummyGenerator(),
+          /*jshint scripturl:true*/
           'mocha:app'
         ]
       ]);
@@ -75,9 +76,10 @@ describe('File Creation', function () {
       this.ember.appname = 'some-app';
     });
 
-    it('creates an application object named after the directory usually', function (done) {
+    it('creates an application object named App (see issue #8)',
+       function (done) {
       this.ember.run({}, function () {
-        helpers.assertFileContent('app/scripts/app.js', /var SomeApp = window.SomeApp = Ember\.Application\.create\(\);/);
+        helpers.assertFileContent('app/scripts/app.js', /var App = window.App = Ember\.Application\.create\(\);/);
         done();
       });
     });
