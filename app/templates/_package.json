@@ -16,6 +16,7 @@
     "grunt-contrib-stylus": "^0.16.0",
     "grunt-contrib-watch": "~0.5.2",<% if (testFramework === 'jasmine') { %>
     "grunt-contrib-jasmine": "~0.5.1",<% } %>
+    "grunt-gh-pages": "^0.9.1",
     "grunt-rev": "~0.1.0",
     "grunt-usemin": "~0.1.12",<% if (testFramework === 'mocha') {  %>
     "grunt-mocha": "~0.4.1",<% } %>
