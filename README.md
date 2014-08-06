@@ -9,7 +9,7 @@ Based on [Yeoman Ember.js Generator][ember-generator].
 **TODO**: Add missing folders.
 
 <dl>
-    <dt>`app/`</dt>
+    <dt><code>app</code></dt>
     <dd>
         The folder structure output by `recroom new` (`yo recroom`).
         Contains basic folder structure, package manifests, and
@@ -17,7 +17,7 @@ Based on [Yeoman Ember.js Generator][ember-generator].
         templates live. Also includes a `Gruntfile.js` that contains most
         of the build tasks for your Rec Room app.
     </dd>
-    <dt>`controller`</dt>
+    <dt><code>controller</code></dt>
     <dd>
         Contains all Ember controller templates, both for simple `page`
         scaffolds and more complicated `model` scaffolds (eg. single/plural
