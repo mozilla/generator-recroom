@@ -34,6 +34,7 @@ describe('Karma', function () {
         '../../router',
         '../../app', [
           helpers.createDummyGenerator(),
+          /*jshint scripturl:true*/
           'mocha:app'
         ]
       ]);
@@ -46,7 +47,7 @@ describe('Karma', function () {
   });
 
   it('creates files with correct syntax', function (done) {
-    this.ember.app.options['karma'] = true;
+    this.ember.app.options.karma = true;
     EXPECTED_FILES = [
       'karma.conf.js',
       'test/integration/index.js',
@@ -56,10 +57,10 @@ describe('Karma', function () {
       helpers.assertFiles(EXPECTED_FILES);
 
       var content = fs.readFileSync(EXPECTED_FILES[1]);
-      assert(content.toString().match(/Temp.ApplicationRoute/));
+      assert(content.toString().match(/App.ApplicationRoute/));
 
-      var content = fs.readFileSync(EXPECTED_FILES[2]);
-      assert(content.toString().match(/Temp.rootElement/));
+      content = fs.readFileSync(EXPECTED_FILES[2]);
+      assert(content.toString().match(/App.rootElement/));
 
       done();
     });

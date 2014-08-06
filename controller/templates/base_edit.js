@@ -1,4 +1,4 @@
-<%= _.classify(appname) %>.<%= _.classify(name) %>EditController = Ember.ObjectController.extend({
+App.<%= _.classify(name) %>EditController = Ember.ObjectController.extend({
     needs: '<%= name.toLowerCase() %>',
     actions: {
         save: function() {

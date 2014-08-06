@@ -1,2 +1,2 @@
-<%= _.classify(appname) %>.<%= _.classify(name) %>View = Ember.View.extend({
+App.<%= _.classify(name) %>View = Ember.View.extend({
 });
