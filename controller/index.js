@@ -17,11 +17,11 @@ var ControllerGenerator = module.exports = function(args, options, config) {
         }
     });
 
-    this.hookFor('recroom:router', {
-        options: {
-            options: options
-        }
-    });
+    // this.hookFor('recroom:router', {
+    //     options: {
+    //         options: options
+    //     }
+    // });
 };
 
 // TODO: add option for Array or Object controller
