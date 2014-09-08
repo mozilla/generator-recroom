@@ -21,15 +21,15 @@
   },
   "dependencies": {
     "express": "^3.4.8",
-    "grunt": "^0.4.2",
-    "grunt-casper": "^0.3.3",
-    "grunt-contrib-concat": "^0.3.0",
-    "grunt-contrib-uglify": "^0.4.0",
-    "grunt-contrib-watch": "^0.5.0",
-    "grunt-contrib-jshint": "^0.9.2",
-    "grunt-shell": "^0.6.4",
+    "grunt": ">=0.4.0",
+    "grunt-casper": "~0.4.0",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-watch": "~0.6.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-shell": "~0.7.0",
     "uglify-js": "^2.3.x",
-    "load-grunt-tasks": "^0.4.0",
+    "load-grunt-tasks": "~0.6.0",
     "shelljs": "^0.2.6",
     "nopt": "~2.2.0",
     "grunt-cli": "~0.1.13",
@@ -37,7 +37,7 @@
     "yo": "~1.1.2",
     "yeoman-generator": "~0.16.0",
     "fleck": "~0.5.1",
-    "chalk": "~0.4.0"
+    "chalk": "~0.5.0"
   },
   "devDependencies": {
     "grunt-banner": "~0.2.2",
