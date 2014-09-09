@@ -131,7 +131,7 @@ The base skeleton of your application will look something like this:
         ├── index.html          - Mocha Spec Runner page
 
 
-## Folder Structure
+##Generator Structure
 **TODO**: Add missing folders.
 
 <dl>
