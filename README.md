@@ -30,6 +30,7 @@ yo recroom:controller controllerName
 ```
 
 Creates:
+
     app/scripts/controllers/controllerName_controller.js
     app/scripts/controllers/controllerName_edit_controller.js
     app/scripts/controllers/controllerNamePlural_controller.js
@@ -50,6 +51,7 @@ yo recroom:page pageName
 ```
 
 Creates:
+
     app/scripts/controllers/pageName_controller.js
     app/scripts/routes/pageName_route.js
     app/templates/pageName.hbs
@@ -62,6 +64,7 @@ yo recroom:model modelName
 ```
 
 Creates:
+
     app/scripts/controllers/modelName_controller.js
     app/scripts/controllers/modelName_edit_controller.js
     app/scripts/controllers/modelNamePlural_controller.js
@@ -83,6 +86,7 @@ yo recroom:view viewName
 ```
 
 Creates:
+
     app/scripts/views/viewName_view.js
     app/templates/viewName.hbs
     app/scripts/views/viewName_edit_view.js
