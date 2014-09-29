@@ -67,6 +67,7 @@ RecroomGenerator.prototype.createDirLayout = function createDirLayout() {
     this.mkdir('app/templates');
     this.mkdir('app/styles');
     this.mkdir('app/images');
+    this.mkdir('app/images/icons');
     this.mkdir('app/scripts');
     this.mkdir('app/scripts/l10n');
     this.mkdir('app/scripts/models');
