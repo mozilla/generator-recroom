@@ -292,7 +292,7 @@ module.exports = function (grunt) {
                 'emberTemplates',
                 'imagemin',
                 'svgmin',
-                'htmlmin'
+                'htmlmin:dist'
             ]
         },<%if (options.karma) { %>
         karma: {
