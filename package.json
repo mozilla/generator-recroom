@@ -41,7 +41,8 @@
   },
   "devDependencies": {
     "grunt-banner": "~0.2.2",
-    "grunt-mocha-test": "^0.10.2"
+    "grunt-mocha-test": "^0.10.2",
+    "gulp": "~3.8.8"
   },
   "peerDependencies": {
     "generator-mocha": ">=0.1.1",
