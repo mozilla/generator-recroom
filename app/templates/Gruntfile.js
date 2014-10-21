@@ -81,7 +81,8 @@ module.exports = function (grunt) {
                             mountFolder(connect, 'test'),
                             mountFolder(connect, '.tmp')
                         ];
-                    }
+                    },
+                    port: 9001
                 }
             },
             dist: {
@@ -128,7 +129,7 @@ module.exports = function (grunt) {
             all: {
                 options: {
                     run: true,
-                    urls: ['http://localhost:<%%= connect.options.port %>/index.html']
+                    urls: ['http://localhost:<%%= connect.test.options.port %>/index.html']
                 }
             }
         },<% } else if (testFramework === 'jasmine') { %>
