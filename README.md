@@ -1,26 +1,5 @@
-# recroom Yeoman Generator [![Build Status](https://travis-ci.org/mozilla/generator-recroom.svg?branch=master)](https://travis-ci.org/mozilla/generator-recroom)
+# This project is no longer under development.
 
-Based on [Yeoman Ember.js Generator][ember-generator].
+For more info on using Ember CLI with Firefox Developer Editon and Firefox OS, look for our MDN docs (COMING SOON).
 
-[ember-generator]: https://github.com/yeoman/generator-ember
-
-## Folder Structure
-
-**TODO**: Add missing folders.
-
-<dl>
-    <dt><code>app</code></dt>
-    <dd>
-        The folder structure output by `recroom new` (`yo recroom`).
-        Contains basic folder structure, package manifests, and
-        `application.hbs` and `index.html`, where your application's base
-        templates live. Also includes a `Gruntfile.js` that contains most
-        of the build tasks for your Rec Room app.
-    </dd>
-    <dt><code>controller</code></dt>
-    <dd>
-        Contains all Ember controller templates, both for simple `page`
-        scaffolds and more complicated `model` scaffolds (eg. single/plural
-        controllers, and edit controllers).
-    </dd>
-</dl>
+For more info on Ember and Ember CLI, visit the [Ember CLI website](http://www.ember-cli.com/).
